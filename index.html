@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Screw_ink — Flash</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Screw_ink</h1>
+    <a href="booking.html" target="_blank" class="book-btn">Book Flash</a>
+  </header>
+
+  <main id="flash-grid"></main>
+
+  <script>
+    fetch('flash.json')
+      .then(res => res.json())
+      .then(data => {
+        const grid = document.getElementById('flash-grid');
+        data.forEach(flash => {
+          const card = document.createElement('div');
+          card.className = 'flash-card';
+          card.innerHTML = `
+            <img src="flash/${flash.image}" alt="${flash.name}">
+            <h2>${flash.name}</h2>
+            <p>${flash.size}</p>
+            <p>${flash.price}</p>
+            <p class="status">${flash.status}</p>
+          `;
+          grid.appendChild(card);
+        });
+      });
+  </script>
+</body>
+</html>
