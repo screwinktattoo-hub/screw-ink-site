@@ -3,61 +3,6 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Screw_ink — Book Flash</title>
-  <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
-<main style="max-width:900px;margin:auto;padding:3rem 1.5rem;">
-  <h1>Book flash</h1>
-  <p style="color:#9a9a9a;font-size:0.85rem;margin-bottom:2rem;line-height:1.5;">
-    Flash tattoos only.<br>
-    Please review size and price range before booking.<br>
-    Deposit required to confirm your appointment.
-  </p>
-  <iframe src="https://cal.com/screw-ink/flash"></iframe>
-</main>
-</body>
-</html>[
-  {
-    "name": "Flash",
-    "image": "flash-01.jpg",
-    "size": "5–8 cm",
-    "price": "Starting at $120",
-    "status": "Available"
-  },
-{
-  "name": "Flash",
-  "image": "flash-02.jpg",
-  "size": "8–12 cm",
-  "price": "Starting at $150",
-  "status": "Available"
-},
-{
-  "name": "Flash",
-  "image": "flash-03.jpg",
-  "size": "8–12 cm",
-  "price": "Starting at $150",
-  "status": "Available"
-},
-{
-  "name": "flash",
-  "image": "flash-04.jpg",
-  "size": "8–12 cm",
-  "price": "Starting at $150",
-  "status": "Available"
-},
-{
-  "name": "Flash",
-  "image": "flash-05.jpg",
-  "size": "8–12 cm",
-  "price": "Starting at $150",
-  "status": "Available"
-}
-]<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Screw_ink — Flash</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
@@ -99,7 +44,28 @@
 </script>
 
 </body>
-</html>:root {
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Screw_ink — Book Flash</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<main style="max-width:900px;margin:auto;padding:3rem 1.5rem;">
+  <h1>Book flash</h1>
+  <p style="color:#9a9a9a;font-size:0.85rem;margin-bottom:2rem;line-height:1.5;">
+    Flash tattoos only.<br>
+    Please review size and price range before booking.<br>
+    Deposit required to confirm your appointment.
+  </p>
+  <iframe src="https://cal.com/screw-ink/flash"></iframe>
+</main>
+</body>
+</html>
+:root {
   --bg: #0b0b0b;
   --fg: #f5f5f5;
   --muted: #9a9a9a;
@@ -204,4 +170,40 @@ footer a {
   color: var(--fg);
   text-decoration: none;
   margin: 0 0.5rem;
+}[
+  {
+    "name": "Flash",
+    "image": "flash-01.jpg",
+    "size": "5–8 cm",
+    "price": "Starting at $120",
+    "status": "Available"
+  },
+{
+  "name": "Flash",
+  "image": "flash-02.jpg",
+  "size": "8–12 cm",
+  "price": "Starting at $150",
+  "status": "Available"
+},
+{
+  "name": "Flash",
+  "image": "flash-03.jpg",
+  "size": "8–12 cm",
+  "price": "Starting at $150",
+  "status": "Available"
+},
+{
+  "name": "flash",
+  "image": "flash-04.jpg",
+  "size": "8–12 cm",
+  "price": "Starting at $150",
+  "status": "Available"
+},
+{
+  "name": "Flash",
+  "image": "flash-05.jpg",
+  "size": "8–12 cm",
+  "price": "Starting at $150",
+  "status": "Available"
 }
+]
