@@ -33,14 +33,19 @@
           img.alt = flash.name;
 
           const info = document.createElement("div");
-          info.className = "flash-info";
-          info.innerHTML = `
-            <h3>${flash.name}</h3>
-            <p>${flash.size}</p>
-            <p>${flash.price}</p>
-            <p class="status">${flash.status}</p>
-          `;
-
+info.className = "flash-info";
+info.innerHTML = `
+  <h3>${flash.name}</h3>
+  <p>${flash.size}</p>
+  <p>${flash.price}</p>
+  <p class="status">${flash.status}</p>
+  <a 
+    href="booking.html" 
+    target="_blank" 
+    class="book-btn">
+    Book this flash
+  </a>
+`;
           card.appendChild(img);
           card.appendChild(info);
           container.appendChild(card);
