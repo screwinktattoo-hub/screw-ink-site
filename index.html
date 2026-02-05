@@ -18,13 +18,9 @@
     <div id="flash-container" class="flash-grid"></div>
   </main>
 
-  <footer>
-    <p>© Screw_ink</p>
-  </footer>
-
   <script>
-    fetch("flash.json")
-      .then(res => res.json())
+    fetch("./flash.json")
+      .then(response => response.json())
       .then(data => {
         const container = document.getElementById("flash-container");
 
@@ -42,13 +38,16 @@
             <h3>${flash.name}</h3>
             <p>${flash.size}</p>
             <p>${flash.price}</p>
-            <p>${flash.status}</p>
+            <p class="status">${flash.status}</p>
           `;
 
           card.appendChild(img);
           card.appendChild(info);
           container.appendChild(card);
         });
+      })
+      .catch(err => {
+        console.error("Flash load error:", err);
       });
   </script>
 
