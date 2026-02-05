@@ -1,21 +1,21 @@
 [
   {
     "name": "Flash-01",
-    "image": "flash-01.jpg",
+    "image": "flash-01.jpeg",
     "size": "6–10 cm",
     "price": "Starting at $120",
     "status": "Available"
   },
   {
     "name": "Flash 02",
-    "image": "flash-02.jpg",
+    "image": "flash-02.jpeg",
     "size": "6–10 cm",
     "price": "Starting at $120",
     "status": "Available"
   },
   {
     "name": "Flash 03",
-    "image": "flash-03.jpg",
+    "image": "flash-03.jpeg",
     "size": "6–10 cm",
     "price": "Starting at $120",
     "status": "Available"
