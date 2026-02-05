@@ -4,34 +4,53 @@
   <meta charset="UTF-8" />
   <title>Screw_ink — Flash</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header>
     <h1>Screw_ink</h1>
-    <a href="booking.html" target="_blank" class="book-btn">Book Flash</a>
+    <p>Flash available — book directly</p>
   </header>
 
-  <main id="flash-grid"></main>
+  <main>
+    <div id="flash-container" class="flash-grid"></div>
+  </main>
+
+  <footer>
+    <p>© Screw_ink</p>
+  </footer>
 
   <script>
-    fetch('flash.json')
+    fetch("flash.json")
       .then(res => res.json())
       .then(data => {
-        const grid = document.getElementById('flash-grid');
+        const container = document.getElementById("flash-container");
+
         data.forEach(flash => {
-          const card = document.createElement('div');
-          card.className = 'flash-card';
-          card.innerHTML = `
-            <img src="flash/${flash.image}" alt="${flash.name}">
-            <h2>${flash.name}</h2>
+          const card = document.createElement("div");
+          card.className = "flash-card";
+
+          const img = document.createElement("img");
+          img.src = `/flash/${flash.image}`;
+          img.alt = flash.name;
+
+          const info = document.createElement("div");
+          info.className = "flash-info";
+          info.innerHTML = `
+            <h3>${flash.name}</h3>
             <p>${flash.size}</p>
             <p>${flash.price}</p>
-            <p class="status">${flash.status}</p>
+            <p>${flash.status}</p>
           `;
-          grid.appendChild(card);
+
+          card.appendChild(img);
+          card.appendChild(info);
+          container.appendChild(card);
         });
       });
   </script>
+
 </body>
 </html>
