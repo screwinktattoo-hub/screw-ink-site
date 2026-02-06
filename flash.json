@@ -33,5 +33,40 @@
     "size": "6–10 cm",
     "price": "Starting at $120",
     "status": "Available"
+  },
+  {
+    "name": "Flash 006",
+    "image": "flash-006.jpeg",
+    "size": "6–10 cm",
+    "price": "Starting at $120",
+    "status": "Available"
+  },
+  {
+    "name": "Flash 007",
+    "image": "flash-007.jpeg",
+    "size": "6–10 cm",
+    "price": "Starting at $120",
+    "status": "Available"
+  },
+  {
+    "name": "Flash 008",
+    "image": "flash-008.jpeg",
+    "size": "6–10 cm",
+    "price": "Starting at $120",
+    "status": "Available"
+  },
+  {
+    "name": "Flash 009",
+    "image": "flash-009.jpeg",
+    "size": "6–10 cm",
+    "price": "Starting at $120",
+    "status": "Available"
+  },
+  {
+    "name": "Flash 010",
+    "image": "flash-010.jpeg",
+    "size": "6–10 cm",
+    "price": "Starting at $120",
+    "status": "Available"
   }
 ]
