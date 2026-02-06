@@ -246,3 +246,29 @@ header p {
   transform: scale(1.08);
   opacity: 0.9;
 }
+/* ROW: CUSTOM BUTTON + SOCIALS */
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* SOCIAL ICONS */
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.social-icon {
+  width: 34px;      /* ⬅️ bigger */
+  height: 34px;
+  object-fit: contain;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.social-links a:hover .social-icon {
+  transform: scale(1.08);
+  opacity: 0.9;
+}
