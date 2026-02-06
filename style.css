@@ -170,3 +170,18 @@ header p {
 .flash-card img {
   max-width: 100%;
 }
+/* =========================
+   CLAIMED FLASH STYLING
+========================= */
+
+.status.claimed {
+  color: #000;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Fade image when claimed */
+.flash-card:has(.status.claimed) img {
+  opacity: 0.45;
+}
