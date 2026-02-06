@@ -167,3 +167,6 @@ header p {
   display: block;
   image-rendering: auto;
 }
+.flash-card img {
+  max-width: 100%;
+}
