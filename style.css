@@ -198,3 +198,19 @@ header p {
   background: #000;
   color: #fff;
 }
+/* SOCIAL ICONS */
+.social-links {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icon {
+  width: 18px;
+  height: 18px;
+  fill: #000;
+  transition: opacity 0.2s ease;
+}
+
+.social-links a:hover .social-icon {
+  opacity: 0.6;
+}
