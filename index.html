@@ -76,9 +76,11 @@
             card.className = "flash-card";
 
             const img = document.createElement("img");
-            img.src = `./flash/${flash.image}`;
-            img.alt = flash.name;
-            img.className = "flash-img";
+img.src = `./flash/${flash.image}`;
+img.alt = flash.name;
+img.className = "flash-img";
+img.loading = "lazy";      // 🔥 BIG SPEED WIN
+img.decoding = "async";    // 🔥 smoother loading
 
             img.addEventListener("click", () => {
               document.getElementById("modal-img").src = img.src;
