@@ -45,21 +45,23 @@
     let currentLang = "en";
 
     const translations = {
-      en: {
-        subtitle: "Flash available — book directly",
-        bookFlash: "Book flash",
-        custom: "Custom projects",
-        priceNote: "Starting price — final price depends on size & placement",
-        bookThis: "Book this flash"
-      },
-      fr: {
-        subtitle: "Flash disponible — réservation directe",
-        bookFlash: "Réserver un flash",
-        custom: "Projets personnalisés",
-        priceNote: "Prix de départ — le prix final dépend de la taille et de l’emplacement",
-        bookThis: "Réserver ce flash"
-      }
-    };
+  en: {
+    subtitle: "Flash available — book directly",
+    bookFlash: "Book flash",
+    custom: "Custom projects",
+    priceNote: "Starting price — final price depends on size & placement",
+    bookThis: "Book this flash",
+    claimed: "CLAIMED"
+  },
+  fr: {
+    subtitle: "Flash disponible — réservation directe",
+    bookFlash: "Réserver un flash",
+    custom: "Projets personnalisés",
+    priceNote: "Prix de départ — le prix final dépend de la taille et de l’emplacement",
+    bookThis: "Réserver ce flash",
+    claimed: "RÉSERVÉ"
+  }
+};
 
     /* =========================
        LOAD FLASH
@@ -87,20 +89,19 @@ img.decoding = "async";    // 🔥 smoother loading
               document.getElementById("image-modal").style.display = "flex";
             });
 
-            const info = document.createElement("div");
-            info.className = "flash-info";
-            info.innerHTML = `
-              <h3>${flash.name}</h3>
-              <p class="price">${flash.price}</p>
-              <p class="price-note">
-                ${translations[currentLang].priceNote}
-              </p>
-              <p>${flash.size}</p>
-              <p class="status">${flash.status}</p>
-              <a href="booking.html" target="_blank" class="book-btn">
-                ${translations[currentLang].bookThis}
-              </a>
-            `;
+            const isClaimed = flash.status.toLowerCase() === "claimed";
+
+<p class="status ${isClaimed ? "claimed" : ""}">
+  ${isClaimed ? translations[currentLang].claimed : flash.status}
+</p>
+
+${
+  !isClaimed
+    ? `<a href="booking.html" target="_blank" class="book-btn">
+         ${translations[currentLang].bookThis}
+       </a>`
+    : ""
+}
 
             card.appendChild(img);
             card.appendChild(info);
