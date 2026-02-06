@@ -272,3 +272,28 @@ header p {
   transform: scale(1.08);
   opacity: 0.9;
 }
+/* SOCIAL ICONS — RELIABLE VERSION */
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.social-links i {
+  font-size: 36px;      /* size of the logos */
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+/* Brand colors */
+.social-links .fa-instagram {
+  color: #E1306C;
+}
+
+.social-links .fa-tiktok {
+  color: #000;
+}
+
+.social-links a:hover i {
+  transform: scale(1.12);
+  opacity: 0.85;
+}
