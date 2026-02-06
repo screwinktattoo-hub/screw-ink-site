@@ -11,8 +11,6 @@
   <header>
     <div class="header-top">
       <h1>Screw_ink</h1>
-
-      <!-- LANGUAGE TOGGLE -->
       <button id="lang-toggle" class="lang-btn">FR</button>
     </div>
 
@@ -40,28 +38,28 @@
 
   <script>
     /* =========================
-       TRANSLATIONS
+       LANGUAGE + TRANSLATIONS
     ========================= */
     let currentLang = "en";
 
     const translations = {
-  en: {
-    subtitle: "Flash available — book directly",
-    bookFlash: "Book flash",
-    custom: "Custom projects",
-    priceNote: "Starting price — final price depends on size & placement",
-    bookThis: "Book this flash",
-    claimed: "CLAIMED"
-  },
-  fr: {
-    subtitle: "Flash disponible — réservation directe",
-    bookFlash: "Réserver un flash",
-    custom: "Projets personnalisés",
-    priceNote: "Prix de départ — le prix final dépend de la taille et de l’emplacement",
-    bookThis: "Réserver ce flash",
-    claimed: "RÉSERVÉ"
-  }
-};
+      en: {
+        subtitle: "Flash available — book directly",
+        bookFlash: "Book flash",
+        custom: "Custom projects",
+        priceNote: "Starting price — final price depends on size & placement",
+        bookThis: "Book this flash",
+        claimed: "CLAIMED"
+      },
+      fr: {
+        subtitle: "Flash disponible — réservation directe",
+        bookFlash: "Réserver un flash",
+        custom: "Projets personnalisés",
+        priceNote: "Prix de départ — le prix final dépend de la taille et de l’emplacement",
+        bookThis: "Réserver ce flash",
+        claimed: "RÉSERVÉ"
+      }
+    };
 
     /* =========================
        LOAD FLASH
@@ -74,34 +72,48 @@
           container.innerHTML = "";
 
           data.forEach(flash => {
+            const isClaimed = flash.status.toLowerCase() === "claimed";
+
             const card = document.createElement("div");
             card.className = "flash-card";
 
             const img = document.createElement("img");
-img.src = `./flash/${flash.image}`;
-img.alt = flash.name;
-img.className = "flash-img";
-img.loading = "lazy";      // 🔥 BIG SPEED WIN
-img.decoding = "async";    // 🔥 smoother loading
+            img.src = `./flash/${flash.image}`;
+            img.alt = flash.name;
+            img.className = "flash-img";
+            img.loading = "lazy";
+            img.decoding = "async";
 
             img.addEventListener("click", () => {
               document.getElementById("modal-img").src = img.src;
               document.getElementById("image-modal").style.display = "flex";
             });
 
-            const isClaimed = flash.status.toLowerCase() === "claimed";
+            const info = document.createElement("div");
+            info.className = "flash-info";
+            info.innerHTML = `
+              <h3>${flash.name}</h3>
 
-<p class="status ${isClaimed ? "claimed" : ""}">
-  ${isClaimed ? translations[currentLang].claimed : flash.status}
-</p>
+              <p class="price">${flash.price}</p>
 
-${
-  !isClaimed
-    ? `<a href="booking.html" target="_blank" class="book-btn">
-         ${translations[currentLang].bookThis}
-       </a>`
-    : ""
-}
+              <p class="price-note">
+                ${translations[currentLang].priceNote}
+              </p>
+
+              <p>${flash.size}</p>
+
+              <p class="status ${isClaimed ? "claimed" : ""}">
+                ${isClaimed ? translations[currentLang].claimed : ""}
+              </p>
+
+              ${
+                !isClaimed
+                  ? `<a href="booking.html" target="_blank" class="book-btn">
+                       ${translations[currentLang].bookThis}
+                     </a>`
+                  : ""
+              }
+            `;
 
             card.appendChild(img);
             card.appendChild(info);
