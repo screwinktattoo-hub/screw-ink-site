@@ -17,68 +17,46 @@
   <main>
     <div id="flash-container" class="flash-grid"></div>
   </main>
-<script>
-  fetch("./flash.json")
-    .then(response => response.json())
-    .then(data => {
-      const container = document.getElementById("flash-container");
 
-      data.forEach(flash => {
-        const card = document.createElement("div");
-        card.className = "flash-card";
+  <!-- IMAGE MODAL -->
+  <div id="image-modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-img" id="modal-img">
+  </div>
 
-        const img = document.createElement("img");
-        img.src = `./flash/${flash.image}`;
-        img.alt = flash.name;
-        img.className = "flash-img";
+  <script>
+    fetch("./flash.json")
+      .then(response => response.json())
+      .then(data => {
+        const container = document.getElementById("flash-container");
 
-        // CLICK TO ZOOM
-        img.addEventListener("click", () => {
-          document.getElementById("modal-img").src = img.src;
-          document.getElementById("image-modal").style.display = "flex";
-        });
+        data.forEach(flash => {
+          const card = document.createElement("div");
+          card.className = "flash-card";
 
-        const info = document.createElement("div");
-        info.className = "flash-info";
-        info.innerHTML = `
-          <h3>${flash.name}</h3>
-          <p>${flash.size}</p>
-          <p>${flash.price}</p>
-          <p class="status">${flash.status}</p>
-          <a href="booking.html" target="_blank" class="book-btn">
-            Book this flash
-          </a>
-        `;
+          const img = document.createElement("img");
+          img.src = `./flash/${flash.image}`;
+          img.alt = flash.name;
+          img.className = "flash-img";
 
-        card.appendChild(img);
-        card.appendChild(info);
-        container.appendChild(card);
-      });
-    });
+          // CLICK IMAGE TO ENLARGE
+          img.addEventListener("click", () => {
+            document.getElementById("modal-img").src = img.src;
+            document.getElementById("image-modal").style.display = "flex";
+          });
 
-  // CLOSE MODAL
-  const modal = document.getElementById("image-modal");
-  const closeBtn = document.querySelector(".close");
+          const info = document.createElement("div");
+          info.className = "flash-info";
+          info.innerHTML = `
+            <h3>${flash.name}</h3>
+            <p>${flash.size}</p>
+            <p>${flash.price}</p>
+            <p class="status">${flash.status}</p>
+            <a href="booking.html" target="_blank" class="book-btn">
+              Book this flash
+            </a>
+          `;
 
-  closeBtn.onclick = () => modal.style.display = "none";
-  modal.onclick = e => {
-    if (e.target === modal) modal.style.display = "none";
-  };
-</script>
-  
-info.className = "flash-info";
-info.innerHTML = `
-  <h3>${flash.name}</h3>
-  <p>${flash.size}</p>
-  <p>${flash.price}</p>
-  <p class="status">${flash.status}</p>
-  <a 
-    href="booking.html" 
-    target="_blank" 
-    class="book-btn">
-    Book this flash
-  </a>
-`;
           card.appendChild(img);
           card.appendChild(info);
           container.appendChild(card);
@@ -87,12 +65,16 @@ info.innerHTML = `
       .catch(err => {
         console.error("Flash load error:", err);
       });
+
+    // CLOSE MODAL
+    const modal = document.getElementById("image-modal");
+    const closeBtn = document.querySelector(".close");
+
+    closeBtn.onclick = () => modal.style.display = "none";
+    modal.onclick = e => {
+      if (e.target === modal) modal.style.display = "none";
+    };
   </script>
 
-  <!-- IMAGE MODAL -->
-<div id="image-modal" class="modal">
-  <span class="close">&times;</span>
-  <img class="modal-img" id="modal-img">
-</div>
 </body>
 </html>
