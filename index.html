@@ -4,20 +4,25 @@
   <meta charset="UTF-8" />
   <title>Screw_ink — Flash</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
   <header>
-    <h1>Screw_ink</h1>
-    <p>Flash available — book directly</p>
+    <div class="header-top">
+      <h1>Screw_ink</h1>
+
+      <!-- LANGUAGE TOGGLE -->
+      <button id="lang-toggle" class="lang-btn">FR</button>
+    </div>
+
+    <p id="subtitle">Flash available — book directly</p>
 
     <div class="header-buttons">
-      <a href="booking.html" target="_blank" class="book-btn">
+      <a href="booking.html" target="_blank" class="book-btn" id="bookFlashBtn">
         Book flash
       </a>
-      <a href="https://tally.so/r/nrgLG5" target="_blank" class="custom-btn">
+      <a href="https://tally.so/r/nrgLG5" target="_blank" class="custom-btn" id="customBtn">
         Custom projects
       </a>
     </div>
@@ -34,48 +39,100 @@
   </div>
 
   <script>
-    fetch("./flash.json")
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById("flash-container");
+    /* =========================
+       TRANSLATIONS
+    ========================= */
+    let currentLang = "en";
 
-        data.forEach(flash => {
-          const card = document.createElement("div");
-          card.className = "flash-card";
+    const translations = {
+      en: {
+        subtitle: "Flash available — book directly",
+        bookFlash: "Book flash",
+        custom: "Custom projects",
+        priceNote: "Starting price — final price depends on size & placement",
+        bookThis: "Book this flash"
+      },
+      fr: {
+        subtitle: "Flash disponible — réservation directe",
+        bookFlash: "Réserver un flash",
+        custom: "Projets personnalisés",
+        priceNote: "Prix de départ — le prix final dépend de la taille et de l’emplacement",
+        bookThis: "Réserver ce flash"
+      }
+    };
 
-          const img = document.createElement("img");
-          img.src = `./flash/${flash.image}`;
-          img.alt = flash.name;
-          img.className = "flash-img";
+    /* =========================
+       LOAD FLASH
+    ========================= */
+    function loadFlash() {
+      fetch("./flash.json")
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById("flash-container");
+          container.innerHTML = "";
 
-          img.addEventListener("click", () => {
-            document.getElementById("modal-img").src = img.src;
-            document.getElementById("image-modal").style.display = "flex";
+          data.forEach(flash => {
+            const card = document.createElement("div");
+            card.className = "flash-card";
+
+            const img = document.createElement("img");
+            img.src = `./flash/${flash.image}`;
+            img.alt = flash.name;
+            img.className = "flash-img";
+
+            img.addEventListener("click", () => {
+              document.getElementById("modal-img").src = img.src;
+              document.getElementById("image-modal").style.display = "flex";
+            });
+
+            const info = document.createElement("div");
+            info.className = "flash-info";
+            info.innerHTML = `
+              <h3>${flash.name}</h3>
+              <p class="price">${flash.price}</p>
+              <p class="price-note">
+                ${translations[currentLang].priceNote}
+              </p>
+              <p>${flash.size}</p>
+              <p class="status">${flash.status}</p>
+              <a href="booking.html" target="_blank" class="book-btn">
+                ${translations[currentLang].bookThis}
+              </a>
+            `;
+
+            card.appendChild(img);
+            card.appendChild(info);
+            container.appendChild(card);
           });
-
-          const info = document.createElement("div");
-          info.className = "flash-info";
-          info.innerHTML = `
-            <h3>${flash.name}</h3>
-            <p class="price">${flash.price}</p>
-            <p class="price-note">
-              Starting price — final price depends on size & placement
-            </p>
-            <p>${flash.size}</p>
-            <p class="status">${flash.status}</p>
-
-            <a href="booking.html" target="_blank" class="book-btn">
-              Book this flash
-            </a>
-          `;
-
-          card.appendChild(img);
-          card.appendChild(info);
-          container.appendChild(card);
         });
-      });
+    }
 
-    // CLOSE MODAL
+    loadFlash();
+
+    /* =========================
+       LANGUAGE TOGGLE
+    ========================= */
+    document.getElementById("lang-toggle").addEventListener("click", () => {
+      currentLang = currentLang === "en" ? "fr" : "en";
+
+      document.getElementById("lang-toggle").innerText =
+        currentLang === "en" ? "FR" : "EN";
+
+      document.getElementById("subtitle").innerText =
+        translations[currentLang].subtitle;
+
+      document.getElementById("bookFlashBtn").innerText =
+        translations[currentLang].bookFlash;
+
+      document.getElementById("customBtn").innerText =
+        translations[currentLang].custom;
+
+      loadFlash();
+    });
+
+    /* =========================
+       MODAL CLOSE
+    ========================= */
     const modal = document.getElementById("image-modal");
     const closeBtn = document.querySelector(".close");
 
