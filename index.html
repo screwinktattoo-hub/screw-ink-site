@@ -121,9 +121,14 @@
 
             ${
               !isClaimed
-                ? `<a href="booking.html" target="_blank" class="book-btn">
-                     ${translations[currentLang].bookThis}
-                   </a>`
+                ? `
+                <a
+  href="https://cal.com/screw-ink/flash?flash=${encodeURIComponent(flash.name)}"
+  target="_blank"
+  class="book-btn"
+>
+  ${translations[currentLang].bookThis}
+</a>
                 : ""
             }
           `;
