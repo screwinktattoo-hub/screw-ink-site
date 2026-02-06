@@ -8,18 +8,31 @@
 </head>
 <body>
 
-  <header>
-    <div class="header-top">
-  <h1>Screw_ink</h1>
-
-  <div class="header-right">
+<header>
+  <!-- TOP ROW: NAME + LANGUAGE -->
+  <div class="header-top">
+    <h1>Screw_ink</h1>
     <button id="lang-toggle" class="lang-btn">FR</button>
+  </div>
+
+  <p id="subtitle">Flash available — book directly</p>
+
+  <!-- ROW: CUSTOM PROJECTS + SOCIALS -->
+  <div class="header-buttons header-row">
+    <a
+      href="https://tally.so/r/nrgLG5"
+      target="_blank"
+      class="custom-btn custom-btn--primary"
+      id="customBtn"
+    >
+      Custom projects
+    </a>
 
     <div class="social-links">
       <!-- Instagram -->
       <a href="https://www.instagram.com/screw_ink" target="_blank" aria-label="Instagram">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png"
+          src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
           alt="Instagram"
           class="social-icon"
         />
@@ -28,59 +41,26 @@
       <!-- TikTok -->
       <a href="https://www.tiktok.com/@screw_ink" target="_blank" aria-label="TikTok">
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/0/08/TikTok_logo.svg"
+          src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg"
           alt="TikTok"
           class="social-icon"
         />
       </a>
     </div>
   </div>
+</header>
+
+<main>
+  <div id="flash-container" class="flash-grid"></div>
+</main>
+
+<!-- IMAGE MODAL -->
+<div id="image-modal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-img" id="modal-img">
 </div>
-    <p id="subtitle">Flash available — book directly</p>
 
-    <div class="header-buttons header-row">
-  <a
-    href="https://tally.so/r/nrgLG5"
-    target="_blank"
-    class="custom-btn custom-btn--primary"
-    id="customBtn"
-  >
-    Custom projects
-  </a>
-
-  <div class="social-links">
-    <!-- Instagram -->
-    <a href="https://www.instagram.com/screw_ink" target="_blank" aria-label="Instagram">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg"
-        alt="Instagram"
-        class="social-icon"
-      />
-    </a>
-
-    <!-- TikTok -->
-    <a href="https://www.tiktok.com/@screw_ink" target="_blank" aria-label="TikTok">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/a/a9/TikTok_logo.svg"
-        alt="TikTok"
-        class="social-icon"
-      />
-    </a>
-  </div>
-</div>
-  </header>
-
-  <main>
-    <div id="flash-container" class="flash-grid"></div>
-  </main>
-
-  <!-- IMAGE MODAL -->
-  <div id="image-modal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-img" id="modal-img">
-  </div>
-
-  <script>
+<script>
   /* =========================
      LANGUAGE + TRANSLATIONS
   ========================= */
@@ -195,3 +175,6 @@
     if (e.target === modal) modal.style.display = "none";
   };
 </script>
+
+</body>
+</html>
