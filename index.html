@@ -4,13 +4,18 @@
   <meta charset="UTF-8" />
   <title>Screw_ink — Flash</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Font Awesome for Instagram / TikTok -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
 </head>
 <body>
 
 <header>
-  <!-- TOP ROW: NAME + LANGUAGE -->
+  <!-- TOP: NAME + LANGUAGE -->
   <div class="header-top">
     <h1>Screw_ink</h1>
     <button id="lang-toggle" class="lang-btn">FR</button>
@@ -30,14 +35,14 @@
     </a>
 
     <div class="social-links">
-  <a href="https://www.instagram.com/screw_ink" target="_blank" aria-label="Instagram">
-    <i class="fa-brands fa-instagram"></i>
-  </a>
+      <a href="https://www.instagram.com/screw_ink" target="_blank" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
 
-  <a href="https://www.tiktok.com/@screw_ink" target="_blank" aria-label="TikTok">
-    <i class="fa-brands fa-tiktok"></i>
-  </a>
-</div>
+      <a href="https://www.tiktok.com/@screw_ink" target="_blank" aria-label="TikTok">
+        <i class="fa-brands fa-tiktok"></i>
+      </a>
+    </div>
   </div>
 </header>
 
@@ -121,14 +126,13 @@
 
             ${
               !isClaimed
-                ? `
-                <a
-  href="https://cal.com/screw-ink/flash?flash=${encodeURIComponent(flash.name)}"
-  target="_blank"
-  class="book-btn"
->
-  ${translations[currentLang].bookThis}
-</a>
+                ? `<a
+                     href="https://cal.com/screw-ink/flash?flash=${encodeURIComponent(flash.name)}"
+                     target="_blank"
+                     class="book-btn"
+                   >
+                     ${translations[currentLang].bookThis}
+                   </a>`
                 : ""
             }
           `;
