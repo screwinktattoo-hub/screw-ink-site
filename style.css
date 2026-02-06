@@ -185,3 +185,16 @@ header p {
 .flash-card:has(.status.claimed) img {
   opacity: 0.45;
 }
+/* EMPHASIZED CUSTOM PROJECT BUTTON */
+.custom-btn--primary {
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  border: 1.5px solid #000;
+  color: #000;
+}
+
+.custom-btn--primary:hover {
+  background: #000;
+  color: #fff;
+}
