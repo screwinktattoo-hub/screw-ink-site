@@ -34,123 +34,117 @@
   </div>
 
   <script>
-    /* =========================
-       LANGUAGE + TRANSLATIONS
-    ========================= */
-    let currentLang = "en";
+  /* =========================
+     LANGUAGE + TRANSLATIONS
+  ========================= */
+  let currentLang = "en";
 
-    const translations = {
-      en: {
-        subtitle: "Flash available — book directly",
-        custom: "Custom projects",
-        priceNote: "Starting price — final price depends on size & placement",
-        bookThis: "Book this flash",
-        claimed: "CLAIMED"
-      },
-      fr: {
-        subtitle: "Flash disponible — réservation directe",
-        custom: "Projets personnalisés",
-        priceNote: "Prix de départ — le prix final dépend de la taille et de l’emplacement",
-        bookThis: "Réserver ce flash",
-        claimed: "RÉSERVÉ"
-      }
-    };
-
-    /* =========================
-       LOAD FLASH
-    ========================= */
-    function loadFlash() {
-      fetch("./flash.json")
-        .then(res => res.json())
-        .then(data => {
-          const container = document.getElementById("flash-container");
-          container.innerHTML = "";
-
-          data.forEach(flash => {
-            const isClaimed = flash.status.toLowerCase() === "claimed";
-
-            const card = document.createElement("div");
-            card.className = "flash-card";
-
-            const img = document.createElement("img");
-            img.src = `./flash/${flash.image}`;
-            img.alt = flash.name;
-            img.className = "flash-img";
-            img.loading = "lazy";
-            img.decoding = "async";
-
-            img.addEventListener("click", () => {
-              document.getElementById("modal-img").src = img.src;
-              document.getElementById("image-modal").style.display = "flex";
-            });
-
-            const info = document.createElement("div");
-            info.className = "flash-info";
-            info.innerHTML = `
-              <h3>${flash.name}</h3>
-
-              <p class="price">${flash.price}</p>
-
-              <p class="price-note">
-                ${translations[currentLang].priceNote}
-              </p>
-
-              <p>${flash.size}</p>
-
-              <p class="status ${isClaimed ? "claimed" : ""}">
-                ${isClaimed ? translations[currentLang].claimed : ""}
-              </p>
-
-              ${
-                !isClaimed
-                  ? `<a href="booking.html" target="_blank" class="book-btn">
-                       ${translations[currentLang].bookThis}
-                     </a>`
-                  : ""
-              }
-            `;
-
-            card.appendChild(img);
-            card.appendChild(info);
-            container.appendChild(card);
-          });
-        });
+  const translations = {
+    en: {
+      subtitle: "Flash available — book directly",
+      custom: "Custom projects",
+      priceNote: "Starting price — final price depends on size & placement",
+      bookThis: "Book this flash",
+      claimed: "CLAIMED"
+    },
+    fr: {
+      subtitle: "Flash disponible — réservation directe",
+      custom: "Projets personnalisés",
+      priceNote: "Prix de départ — le prix final dépend de la taille et de l’emplacement",
+      bookThis: "Réserver ce flash",
+      claimed: "RÉSERVÉ"
     }
+  };
+
+  /* =========================
+     LOAD FLASH
+  ========================= */
+  function loadFlash() {
+    fetch("./flash.json")
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("flash-container");
+        container.innerHTML = "";
+
+        data.forEach(flash => {
+          const isClaimed = flash.status.toLowerCase() === "claimed";
+
+          const card = document.createElement("div");
+          card.className = "flash-card";
+
+          const img = document.createElement("img");
+          img.src = `./flash/${flash.image}`;
+          img.alt = flash.name;
+          img.className = "flash-img";
+          img.loading = "lazy";
+          img.decoding = "async";
+
+          img.addEventListener("click", () => {
+            document.getElementById("modal-img").src = img.src;
+            document.getElementById("image-modal").style.display = "flex";
+          });
+
+          const info = document.createElement("div");
+          info.className = "flash-info";
+          info.innerHTML = `
+            <h3>${flash.name}</h3>
+
+            <p class="price">${flash.price}</p>
+
+            <p class="price-note">
+              ${translations[currentLang].priceNote}
+            </p>
+
+            <p>${flash.size}</p>
+
+            <p class="status ${isClaimed ? "claimed" : ""}">
+              ${isClaimed ? translations[currentLang].claimed : ""}
+            </p>
+
+            ${
+              !isClaimed
+                ? `<a href="booking.html" target="_blank" class="book-btn">
+                     ${translations[currentLang].bookThis}
+                   </a>`
+                : ""
+            }
+          `;
+
+          card.appendChild(img);
+          card.appendChild(info);
+          container.appendChild(card);
+        });
+      });
+  }
+
+  loadFlash();
+
+  /* =========================
+     LANGUAGE TOGGLE
+  ========================= */
+  document.getElementById("lang-toggle").addEventListener("click", () => {
+    currentLang = currentLang === "en" ? "fr" : "en";
+
+    document.getElementById("lang-toggle").innerText =
+      currentLang === "en" ? "FR" : "EN";
+
+    document.getElementById("subtitle").innerText =
+      translations[currentLang].subtitle;
+
+    document.getElementById("customBtn").innerText =
+      translations[currentLang].custom;
 
     loadFlash();
+  });
 
-    /* =========================
-       LANGUAGE TOGGLE
-    ========================= */
-    document.getElementById("lang-toggle").addEventListener("click", () => {
-      currentLang = currentLang === "en" ? "fr" : "en";
+  /* =========================
+     MODAL CLOSE
+  ========================= */
+  const modal = document.getElementById("image-modal");
+  const closeBtn = document.querySelector(".close");
 
-      document.getElementById("lang-toggle").innerText =
-        currentLang === "en" ? "FR" : "EN";
-
-      document.getElementById("subtitle").innerText =
-        translations[currentLang].subtitle;
-
-      document.getElementById("bookFlashBtn").innerText =
-        translations[currentLang].bookFlash;
-
-      document.getElementById("customBtn").innerText =
-        translations[currentLang].custom;
-
-      loadFlash();
-    });
-
-    /* =========================
-       MODAL CLOSE
-    ========================= */
-    const modal = document.getElementById("image-modal");
-    const closeBtn = document.querySelector(".close");
-
-    closeBtn.onclick = () => modal.style.display = "none";
-    modal.onclick = e => {
-      if (e.target === modal) modal.style.display = "none";
-    };
-  </script>
-
-</body>
-</html>
+  closeBtn.onclick = () => modal.style.display = "none";
+  modal.onclick = e => {
+    if (e.target === modal) modal.style.display = "none";
+  };
+</script>
